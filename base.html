@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Slanguage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"/>
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.0/dist/chart.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container-fluid">
+        <!--Full width container-->
+        <a class="navbar-brand" href="/"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+
+            <li class="nav-item {% if request.path =='/facebook' %} active {% endif %}">
+              <a class="nav-link " href="{{ url_for('facebook')}}"><img class="img-small" src="{{url_for('static', filename='styles/assets/images/facebook.png')}}"/></a>
+            </li>
+            <li class="nav-item {% if request.path =='/instagram' %} active {% endif %}">
+              <a class="nav-link" href="{{ url_for('instagram')}}"><img class="img-small" src="{{url_for('static', filename='styles/assets/images/instagram.png')}}"/></a>
+            </li>
+            <li class="nav-item {% if request.path =='/' %} active {% endif %}">
+              <a class="nav-link" href="{{ url_for('home')}}"><img class="img-small" src="{{url_for('static', filename='styles/assets/images/home.png')}}"/></a>
+            </li>
+            <li class="nav-item {% if request.path =='/discord' %} active {% endif %}">
+              <a class="nav-link" href="{{ url_for('discord')}}"><img class="img-small" src="{{url_for('static', filename='styles/assets/images/discord.png')}}"/></a>
+            </li>
+            <li class="nav-item {% if request.path =='/reddit' %} active {% endif %}">
+              <a class="nav-link" href="{{ url_for('reddit')}}"><img class="img-small" src="{{url_for('static', filename='styles/assets/images/reddit.png')}}"/></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+    
+  </body>
+
+  <footer class="text-center text-lg-start bg-light text-muted mt-5" style="clear:both;">
+    <section class="d-flex justify-content-center p-4 border-bottom" style="background-color: rgba(0, 0, 0, 0.05)">
+      <div class="me-5">
+        <p>Created by: Team Karp</p>
+      </div>
+      <div class="me-5">
+        <a href="https://github.com/aaronchan32/slanguage" target="_blank" class="text-reset">GitHub</a>
+      </div>
+    </section>
+  </footer>
+
+</html>
