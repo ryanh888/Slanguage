@@ -1,0 +1,296 @@
+{% macro form(socialPlatform) %}
+
+  <script>
+  function uploadSubmit() {
+    document.getElementById('uploadForm').submit();
+    document.getElementById("spinner").style.display = "block"    
+  }
+  </script>
+  
+
+  <form id="uploadForm" method="POST" enctype="multipart/form-data">
+    <button class="round-btn-{{socialPlatform}}" type="button" value="Choose File" onclick="document.getElementById('choosefile').click();">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16"><g fill="white"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/></g></svg>
+    Upload
+    </button>
+    <input id="choosefile" type="file" name="file" accept="application/json" hidden="hidden" required="required" onchange="uploadSubmit();"/> 
+    </button>
+  </form>
+
+{% endmacro %}
+
+{% macro pieChart(id, yaxis, xaxis, title, legend, singleArray) %} 
+
+<div class="col-xs-10 col-sm-6 col-md-6">
+  <div class="card card-style mb-5">
+    <div class="card-body">
+      <h1 style="text-align: center; font-size: 25px;"> {{title}}</h1>
+      <div class="chart-container">
+        <canvas id="{{id}}"></canvas>
+        <script>
+          var ctx = document
+            .getElementById("{{id}}")
+            .getContext('2d');
+            var myChart = new Chart(ctx, {
+              responsive: true,
+              type: "pie",
+              data: {
+                labels: {{xaxis|tojson}},
+                datasets: [
+                  {
+                  label: '{{legend}}',
+                  data: {{singleArray|tojson}},
+                  backgroundColor: [
+                    'rgba(255, 0, 0, 0.3)',
+                    'rgba(255, 76, 7, 0.3)',
+                    'rgba(255, 178, 0, 0.3)',
+                    'rgba(83, 247, 0, 0.3)',
+                    'rgba(0, 156, 53, 0.3)',
+                    'rgba(0, 140, 255, 0.3)',
+                    'rgba(0, 126, 255, 0.4)',
+                    'rgba(83, 20, 155, 0.3)',
+                    'rgba(112, 0, 170, 0.3)',
+                    'rgba(122, 0, 62, 0.3)'
+                  ],
+                  borderColor: [
+                    'rgba(255, 0, 0, 0.3)',
+                    'rgba(255, 76, 7, 0.3)',
+                    'rgba(202, 128, 0, 0.3)',
+                    'rgba(83, 247, 0, 0.3)',
+                    'rgba(0, 156, 53, 0.3)',
+                    'rgba(0, 140, 255, 0.3)',
+                    'rgba(0, 126, 255, 0.4)',
+                    'rgba(83, 20, 155, 0.3)',
+                    'rgba(112, 0, 170, 0.3)',
+                    'rgba(122, 0, 62, 0.3)'
+                  ],
+                  borderWidth: 2,
+                },
+              ]
+            },
+            options: {
+              response:true,
+              aspectRatio: 1,
+              scales: {
+                {{yaxis}}
+              },
+              plugins: {
+                legend: {
+                  labels: {
+                    font: {
+                      size: 15,
+                    }
+                  }
+                } 
+              }
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+{% macro msgWordsCountGraph(id, type, yaxis, xaxis, title, legend, singleArray, doubleArray) %} 
+
+<div class="col-xs-10 col-sm-6 col-md-6">
+  <div class="card card-style mb-5">
+    <div class="card-body">
+      <h1 style="text-align: center; font-size: 25px"> {{title}}</h1>
+      <div class="chart-container">
+        <canvas id="{{id}}"></canvas>
+        <script>
+          var ctx = document
+            .getElementById("{{id}}")
+            .getContext('2d');
+          var myChart = new Chart(ctx, {
+            responsive: true,
+            type: '{{type}}',
+            data: {
+              labels: {{xaxis|tojson}},
+              datasets: [
+                {
+                  label: '{{legend[0]}}',
+                  data: {{singleArray|tojson}}, //Serialize an object to a string of JSON, and mark it safe to render in HTML. This filter is only for use in HTML documents.
+                  backgroundColor: [
+                    'rgba(255, 0, 0, 0.46)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 0, 0, 0.55)',
+                  ],
+                  borderWidth: 2,
+                },
+                {
+                 label: '{{legend[1]}}',
+                 data: {{doubleArray|tojson}}, //Serialize an object to a string of JSON, and mark it safe to render in HTML. This filter is only for use in HTML documents.
+                  backgroundColor: [  
+                    'rgba(0, 140, 255, 0.46)',
+                  ],
+                  borderColor: [
+                    'rgba(0, 140, 255, 0.55)',
+                  ],
+                  borderWidth: 2,
+                },
+              ]
+            },
+            options: {
+              response:true,
+              aspectRatio: 1,
+              scales: {
+                {{yaxis}}
+              },
+              plugins: {
+                legend: {
+                  labels: {
+                    font: {
+                      size: 15,
+                    }
+                  }
+                } 
+              }
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+{% macro slangCountGraph(id, yaxis, xaxis, legend, singleArray, slangListLength) %} 
+
+<div class="col-xs-10 col-sm-6 col-md-6">
+  <div class="card card-style mb-5">
+    <div class="card-body">
+      <h1 style="text-align: center; font-size: 25px"> Top 10 Slang Count Per Person </h1>
+      <div class="chart-container">
+        <canvas id="{{id}}"></canvas>
+        <script>
+          var ctx = document
+            .getElementById("{{id}}")
+            .getContext('2d');
+          var myChart = new Chart(ctx, {
+            responsive: true,
+            type: "bar",
+            data: {
+              labels: {{xaxis|tojson}},
+              datasets: [
+                {% if slangListLength >= 10 %}
+                {% for i in range(10) %}
+                {
+                  label: '{{legend[i]}}',
+                  data: {{singleArray[i]}}, //Serialize an object to a string of JSON, and mark it safe to render in HTML. This filter is only for use in HTML documents.
+                  backgroundColor: '{{[
+                    'rgba(255, 0, 0, 0.3)',
+                    'rgba(255, 76, 7, 0.3)',
+                    'rgba(255, 178, 0, 0.3)',
+                    'rgba(83, 247, 0, 0.3)',
+                    'rgba(0, 156, 53, 0.3)',
+                    'rgba(0, 140, 255, 0.3)',
+                    'rgba(0, 126, 255, 0.4)',
+                    'rgba(83, 20, 155, 0.3)',
+                    'rgba(112, 0, 170, 0.3)',
+                    'rgba(122, 0, 62, 0.3)'
+                    ][i]}}',
+                  borderColor: '{{[
+                    'rgba(255, 0, 0, 0.3)',
+                    'rgba(255, 76, 7, 0.3)',
+                    'rgba(202, 128, 0, 0.3',
+                    'rgba(83, 247, 0, 0.3)',
+                    'rgba(0, 156, 53, 0.3)',
+                    'rgba(0, 140, 255, 0.3)',
+                    'rgba(0, 126, 255, 0.4)',
+                    'rgba(83, 20, 155, 0.3)',
+                    'rgba(112, 0, 170, 0.3)',
+                    'rgba(122, 0, 62, 0.3)'
+                    ][i]}}',
+                  borderWidth: 2,
+                },
+                {% endfor %}
+                {% endif %}
+
+                {% if slangListLength < 10 %}
+                {% for i in range(slangListLength) %}
+                {
+                  label: '{{legend[i]}}',
+                  data: {{singleArray[i]}}, //Serialize an object to a string of JSON, and mark it safe to render in HTML. This filter is only for use in HTML documents.
+                  backgroundColor: '{{[
+                    'rgba(255, 0, 0, 0.3)',
+                    'rgba(255, 76, 7, 0.3)',
+                    'rgba(255, 178, 0, 0.3)',
+                    'rgba(83, 247, 0, 0.3)',
+                    'rgba(0, 156, 53, 0.3)',
+                    'rgba(0, 140, 255, 0.3)',
+                    'rgba(0, 126, 255, 0.4)',
+                    'rgba(83, 20, 155, 0.3)',
+                    'rgba(112, 0, 170, 0.3)',
+                    'rgba(122, 0, 62, 0.3)'
+                    ][i]}}',
+                  borderColor: '{{[
+                    'rgba(255, 0, 0, 0.3)',
+                    'rgba(255, 76, 7, 0.3)',
+                    'rgba(202, 128, 0, 0.3',
+                    'rgba(83, 247, 0, 0.3)',
+                    'rgba(0, 156, 53, 0.3)',
+                    'rgba(0, 140, 255, 0.3)',
+                    'rgba(0, 126, 255, 0.4)',
+                    'rgba(83, 20, 155, 0.3)',
+                    'rgba(112, 0, 170, 0.3)',
+                    'rgba(122, 0, 62, 0.3)'
+                    ][i]}}',
+                  borderWidth: 2,
+                },
+                {% endfor %}
+                {% endif %}
+              ]
+            },
+            options: {
+              response:true,
+              aspectRatio: 1,
+              scales: {
+                {{yaxis}}
+              },
+              plugins: {
+                legend: {
+                  labels: {
+                    font: {
+                      size: 15,
+                    }
+                  }
+                } 
+              }
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+{% macro modal(id, socialPlatform, isSocial) %}
+<div class="modal fade" id="{{id}}" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+      {% if isSocial %}
+        <h3 id="{{id}}">How to Download {{socialPlatform}} Chat History</h3>
+      {% else %}
+        <h3 id="{{id}}">{{socialPlatform}}</h3>
+      {% endif %}
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{ caller() }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}
