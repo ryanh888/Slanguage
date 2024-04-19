@@ -1,0 +1,206 @@
+p {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    
+}
+
+.p-white {
+    color: white;
+}
+
+.black-container {
+    background-color: rgb(33, 37, 41);
+    padding-top: 5rem;
+}
+
+.home-width {
+    width: 62.5%;
+}
+
+svg {
+    display:inline-block;
+    color:white;
+    width: 1.3rem;
+    height: 1.3rem;
+    text-align: center;
+    vertical-align: bottom;
+    
+}
+
+.navbar {
+    /* box-shadow: 0rem .25rem 0.5rem rgba(124, 124, 124, 1); */
+    height: 3.5rem;
+} 
+
+#navbarScroll {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+
+.nav-item {
+    margin-right: 2rem;
+    transition: 0.3s;
+}
+
+.nav-item:hover {
+    transform: translateY(0.3em);
+}
+
+.img-small {
+    height: 2rem;
+}
+
+.card {
+    border-radius: 1rem;
+    box-shadow: 0rem 0rem 1rem 0.03rem rgba(0, 0, 0, 0.137);
+} 
+
+
+.bottom-card{
+    background-color:white;
+    border-bottom-left-radius:1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.image-card {
+    transition: 0.3s;
+    border-radius: 1rem;
+    box-shadow: 0rem 0.2rem 1rem 0.3rem rgb(15, 15, 15);
+}
+
+.image-card:hover {
+    transform: translateY(-0.3em);
+  }
+
+
+.card-img-top {
+    height: 11.5rem; 
+    border-top-left-radius:1rem;
+    border-top-right-radius:1rem;
+    box-shadow: 0rem 0.2rem 0.5rem 0.1rem rgb(24, 24, 24);
+}
+
+.active {
+    border-bottom: 2px solid white;
+    color: yellow;
+}
+
+.noBlue {
+    color:inherit;
+    text-decoration: none;
+}
+
+.round-btn {
+    background-color: rgb(71, 144, 255);
+    border-color:rgb(71, 144, 255);
+    border-style: solid;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    font-size: 1.15rem;
+    border-radius: 2rem;
+    transition-duration: 0.3s;
+    line-height: 1.5rem;
+}
+
+.round-btn:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em black;
+    transform: translateY(-0.25em);
+}
+
+
+.text-input {
+    border-radius: 2rem;
+    border-style: solid;
+    border-color:rgba(124, 124, 124, 1);
+    line-height: 1.5rem;
+    font-size: 1.15rem;
+    padding: 0.8rem 1.5rem;
+}
+
+.text-input:focus {
+    outline: none;
+}
+
+
+.big-text {
+    font-size: 4rem;
+    text-shadow: 0rem 0rem 0.5rem rgba(62, 152, 255, 0.6);
+    background: linear-gradient(rgb(50, 224, 255), rgb(26, 98, 255));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+[class*="big-text-"] {
+    font-size: 4rem;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.big-text-facebook {
+    text-shadow: 0rem 0rem 0.5rem rgba(62, 152, 255, 0.6);
+    background: linear-gradient(rgb(50, 224, 255), rgb(26, 98, 255));
+}
+
+.big-text-instagram {
+    text-shadow: 0rem 0rem 0.5rem rgba(255, 252, 62, 0.3);
+    background: linear-gradient(rgb(255, 184, 32), rgb(255, 58, 32), rgb(136, 32, 255));
+    height:5rem;
+}
+
+.big-text-discord {
+    text-shadow: 0rem 0rem 0.5rem rgba(168, 62, 255, 0.3);
+    color: rgb(97, 10, 197);
+}
+
+.round-btn-yellow {
+    background-color: rgb(255, 137, 59);
+    border-color: rgb(255, 137, 59);
+    border-style: solid;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    font-size: 1.15rem;
+    border-radius: 2rem;
+    transition-duration: 0.3s;
+    line-height: 1.5rem;
+}
+
+.round-btn-yellow:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em black;
+    transform: translateY(-0.25em);
+}
+
+.discord-text {
+    font-size: 4rem;
+    text-shadow: 0rem 0rem 0.5rem rgba(255, 252, 62, 0.3);
+    background: linear-gradient(rgb(255, 184, 32), rgb(255, 58, 32), rgb(136, 32, 255));
+    height:5rem;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgb(87, 165, 255);
+}
+
+.round-btn-yellow {
+    background-color: rgb(255, 137, 59);
+    border-color: rgb(255, 137, 59);
+    border-style: solid;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    font-size: 1.15rem;
+    border-radius: 2rem;
+    transition-duration: 0.3s;
+    line-height: 1.5rem;
+}
+
+.round-btn-yellow:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em black;
+    transform: translateY(-0.25em);
+}
